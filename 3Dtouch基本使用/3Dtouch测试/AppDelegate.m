@@ -36,7 +36,7 @@
     // 加载自定义图片
 //    NSDictionary *userInfo1 = @{@"key":@"example"};
     UIApplicationShortcutIcon *exampleIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"imageName"];
-    UIMutableApplicationShortcutItem *exampleItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"example" localizedTitle:@"大标题" localizedSubtitle:@"小标题" icon:exampleIcon userInfo:nil];
+    UIMutableApplicationShortcutItem *exampleItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"example" localizedTitle:@"Ssuperjoy" localizedSubtitle:@"小标题" icon:exampleIcon userInfo:nil];
 
     application.shortcutItems = @[itemCamera, itemPhotoLibrary, exampleItem];
     
