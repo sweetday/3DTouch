@@ -64,7 +64,7 @@
     }
     
     if ([shortcutItem.type isEqualToString:@"example"]) {
-        NSLog(@"333");
+        NSLog(@"example");
     }
 }
 
