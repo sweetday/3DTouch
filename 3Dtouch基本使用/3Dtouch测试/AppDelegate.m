@@ -29,7 +29,6 @@
     
     // 相册
     UIApplicationShortcutIcon *iconPhotoLibrary = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeLove];
-    
     UIMutableApplicationShortcutItem *itemPhotoLibrary = [[UIMutableApplicationShortcutItem alloc] initWithType:@"photoLibrary" localizedTitle:@"相册"];
     
     itemPhotoLibrary.icon = iconPhotoLibrary;
@@ -41,6 +40,8 @@
     return YES;
 }
 
+
+// 多写一个方法
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
 {
     if ([shortcutItem.type isEqualToString:@"camera"]) {
