@@ -32,8 +32,13 @@
     UIMutableApplicationShortcutItem *itemPhotoLibrary = [[UIMutableApplicationShortcutItem alloc] initWithType:@"photoLibrary" localizedTitle:@"相册"];
     
     itemPhotoLibrary.icon = iconPhotoLibrary;
+    
+    // 加载自定义图片
+//    NSDictionary *userInfo1 = @{@"key":@"example"};
+    UIApplicationShortcutIcon *exampleIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"imageName"];
+    UIMutableApplicationShortcutItem *exampleItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"example" localizedTitle:@"大标题" localizedSubtitle:@"小标题" icon:exampleIcon userInfo:nil];
 
-    application.shortcutItems = @[itemCamera,itemPhotoLibrary];
+    application.shortcutItems = @[itemCamera, itemPhotoLibrary, exampleItem];
     
     [self.window makeKeyAndVisible];
     
@@ -41,20 +46,26 @@
 }
 
 
-// 多写一个方法
+// 自己实现下面方法
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
 {
     if ([shortcutItem.type isEqualToString:@"camera"]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.allowsEditing = YES;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [self.window.rootViewController presentViewController:picker animated:YES completion:nil];    }
+        [self.window.rootViewController presentViewController:picker animated:YES completion:nil];
+    }
     
     if ([shortcutItem.type isEqualToString:@"photoLibrary"]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.allowsEditing = YES;
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        [self.window.rootViewController presentViewController:picker animated:YES completion:nil];    }
+        [self.window.rootViewController presentViewController:picker animated:YES completion:nil];
+    }
+    
+    if ([shortcutItem.type isEqualToString:@"example"]) {
+        NSLog(@"333");
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
