@@ -9,7 +9,6 @@
 #import "SecondViewController.h"
 
 @interface SecondViewController ()
-@property (nonatomic, strong) NSArray *previewActions;
 @end
 
 @implementation SecondViewController
@@ -22,17 +21,20 @@
     self.view.backgroundColor = [UIColor greenColor];
     
     // 创建预览下面的按钮
-    self.previewActions = @[
-                            [UIPreviewAction actionWithTitle:@"请点击我" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
-                                NSLog(@"你点到我了");
-                            }]];
+//    self.previewActions = @[
+//                            [UIPreviewAction actionWithTitle:@"请点击我" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+//                                NSLog(@"你点到我了");
+//                            }]];
 
 }
 
 // 预览下面的按钮
 - (NSArray<id<UIPreviewActionItem>> *)previewActionItems
 {
-    return self.previewActions;
+    return @[
+             [UIPreviewAction actionWithTitle:@"请点击我" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+                 NSLog(@"你点到我了");
+             }]];
 }
 
 
