@@ -21,10 +21,11 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
     self.window.rootViewController = nav;
     
-    // 拍照
+    // 拍照 UIApplicationShortcutIcon 设置icon
     UIApplicationShortcutIcon *iconCamera = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeCapturePhoto];
+    // UIMutableApplicationShortcutItem 设置标题和type（可以作为一种标识）
     UIMutableApplicationShortcutItem *itemCamera = [[UIMutableApplicationShortcutItem alloc] initWithType:@"camera" localizedTitle:@"拍照"];
- 
+    
     itemCamera.icon = iconCamera;
     
     // 相册
@@ -33,11 +34,11 @@
     
     itemPhotoLibrary.icon = iconPhotoLibrary;
     
-    // 加载自定义图片
+    // 设置自定义图片的icon
 //    NSDictionary *userInfo1 = @{@"key":@"example"};
     UIApplicationShortcutIcon *exampleIcon = [UIApplicationShortcutIcon iconWithTemplateImageName:@"imageName"];
-    UIMutableApplicationShortcutItem *exampleItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"example" localizedTitle:@"Ssuperjoy" localizedSubtitle:@"小标题" icon:exampleIcon userInfo:nil];
-
+    UIMutableApplicationShortcutItem *exampleItem = [[UIMutableApplicationShortcutItem alloc] initWithType:@"example" localizedTitle:@"大标题" localizedSubtitle:@"小标题" icon:exampleIcon userInfo:nil]; // 分大标题和小标题
+    
     application.shortcutItems = @[itemCamera, itemPhotoLibrary, exampleItem];
     
     [self.window makeKeyAndVisible];
@@ -49,6 +50,7 @@
 // 自己实现下面方法
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler
 {
+    // 根据type响应每个按钮的结果。
     if ([shortcutItem.type isEqualToString:@"camera"]) {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.allowsEditing = YES;
